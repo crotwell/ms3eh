@@ -1,0 +1,23 @@
+{
+  "name": "ms3eh",
+  "version": "0.0.1",
+  "description": "Commonly needed \"extras\" stored in miniseed3 extra headers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "tots": "npx json-schema-to-typescript ../schema/stdmetadata.schema.json > ms3eh_bag.ts"
+  },
+  "keywords": [
+    "miniseed3",
+    "json",
+    "jsonschema",
+    "seismology"
+  ],
+  "author": "Philip Crotwell",
+  "license": "LGPL-3.0-or-later",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "json-schema-to-typescript": "^13.1.2",
+    "typescript": "^5.3.3"
+  }
+}
