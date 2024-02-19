@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://seis.sc.edu/bag.schema.json",
-  "title": "BAG MS3 Extra Header",
-  "description": "Standard metadata about a seismogram.",
+  "title": "Bag Extra Header",
+  "description": "Common metadata json about a seismogram.",
   "$defs": {
     "Marker": {
       "type": "object",
@@ -62,17 +62,40 @@
         "dp": {
           "description": "depth in kilometers",
           "type": "number"
-        },
-        "mag": {
+        }
+      },
+      "required": ["time", "la", "lo", "dp"]
+    },
+    "Magnitude": {
+      "type": "object",
+      "properties": {
+        "val": {
           "description": "magnitude value",
           "type": "number"
         },
-        "magtype": {
+        "type": {
           "description": "magnitude type",
           "type": "string"
         }
       },
-      "required": ["time", "la", "lo", "dp"]
+      "required": ["val"]
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "public identifier for earthquake",
+          "type": "string"
+        },
+        "origin": {
+          "description": "origin, location and time",
+          "$ref": "#/$defs/Origin"
+        },
+        "mag": {
+          "description": "magnitude",
+          "$ref": "#/$defs/Magnitude"
+        }
+      }
     },
     "Path": {
       "type": "object",
@@ -90,19 +113,27 @@
           "type": "number"
         }
       }
-    }
-  },
-  "type": "object",
-  "properties": {
-    "y": {
-      "description": "timeseries amplitude",
+    },
+    "Timeseries": {
       "type": "object",
       "properties": {
         "si": {
           "description": "si units of the timeseries amplitude, ex m/s m/s2",
           "type": "string"
+        },
+        "proc": {
+          "description": "basic processing type. Raw is unprocessed, gain has scalar gain/units, corrected transfer of frequency response, processed further userlevel processing",
+          "enum": ["raw", "gain", "corrected", "synth", "processed"]
         }
-      }
+      },
+      "required": [ "si" ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "y": {
+      "description": "timeseries amplitude and processing state",
+      "$ref": "#/$defs/Timeseries"
     },
     "st": {
       "description": "receiver station",
@@ -110,7 +141,7 @@
     },
     "ev": {
       "description": "source earthquake",
-      "$ref": "#/$defs/Origin"
+      "$ref": "#/$defs/Event"
     },
     "path": {
       "description": "path between source and receiver",
