@@ -16,18 +16,26 @@ def crcAsHex(crc):
 
 eh = {
         "bag": {
+            "y": {
+                "proc": "raw",
+                "si": "count"
+            },
             "st": {
                 "la": 34.65,
                 "lo": -80.46
            },
            "ev": {
-               "time": "2024-02-06T11:30:03Z",
-               "la": 34.17,
-               "lo": -80.70,
-               "dp": 1.68,
-               "mag": 1.74,
-               "magtype": "md"
-          }
+               "origin": {
+                   "time": "2024-02-06T11:30:03Z",
+                   "la": 34.17,
+                   "lo": -80.70,
+                   "dp": 1.68,
+               },
+               "mag": {
+                   "val": 1.74,
+                   "type": "md"
+               }
+            }
         }
     }
 ehStr = json.dumps(eh)
