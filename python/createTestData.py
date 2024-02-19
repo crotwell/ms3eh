@@ -46,14 +46,14 @@ data = array.array('i',( (77) for i in range(0,10)))
 #data = [(i%99-49) for i in range(0,1000)]
 header = simpledali.MSeed3Header()
 header.starttime = "2024-01-01T15:13:55.123456Z"
-header.identifier = "FDSN:XX_FAKE__H_H_Z"
+identifier = "FDSN:XX_FAKE__H_H_Z"
 header.encoding = simpledali.seedcodec.INTEGER
 header.sampleRatePeriod = 40
 header.numSamples = len(data)
-header.extraHeadersStr = ehStr
+extraHeadersStr = ehStr
 encodedData = simpledali.compress(header.encoding, data).dataView
 header.dataLength = len(encodedData)
-record = simpledali.Mseed3Record(header, encodedData)
+record = simpledali.Mseed3Record(header, identifier, encodedData, extraHeaders=extraHeadersStr)
 recordBytes = record.pack()
 
 (head_crc,) = struct.unpack("<I", recordBytes[simpledali.CRC_OFFSET:simpledali.CRC_OFFSET+4])

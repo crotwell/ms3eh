@@ -19,9 +19,8 @@ def loadSchema(schemafilename, registry):
 def validate(ms3filename, ehschema, registry):
     with open(ms3filename, "rb") as infile:
         rec = simpledali.mseed3.nextMSeed3Record(infile)
-        eh = rec.extractExtraHeaders()
-        print(eh)
-        jsonschema.validate(instance=eh, schema=ehschema, registry=registry)
+        print(rec.eh)
+        jsonschema.validate(instance=rec.eh, schema=ehschema, registry=registry)
         print("Got miniseed3 record")
 
 def do_parseargs():
