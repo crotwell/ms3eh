@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seis.sc.edu/bag.schema.json",
+  "title": "BAG MS3 Extra Header",
+  "description": "Standard metadata about a seismogram.",
+  "$defs": {
+    "Marker": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "description": "marker time as ISO8601",
+          "type":"string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "amp": {
+          "type": "number"
+        }
+      },
+      "required": ["time", "name"]
+    },
+    "Station": {
+      "type": "object",
+      "properties": {
+        "la": {
+          "description": "latitude in degrees",
+          "type": "number"
+        },
+        "lo": {
+          "description": "longitude in degrees",
+          "type": "number"
+        },
+        "elev": {
+          "description": "elevation in meters",
+          "type": "number"
+        },
+        "dp": {
+          "description": "depth below surface in meters",
+          "type": "number"
+        }
+      },
+      "required": ["la", "lo"]
+    },
+    "Origin": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "description": "origin time as ISO8601",
+          "type": "string",
+          "format": "date-time"
+        },
+        "la": {
+          "description": "latitude in degrees",
+          "type": "number"
+        },
+        "lo": {
+          "description": "longitude in degrees",
+          "type": "number"
+        },
+        "dp": {
+          "description": "depth in kilometers",
+          "type": "number"
+        },
+        "mag": {
+          "description": "magnitude value",
+          "type": "number"
+        },
+        "magtype": {
+          "description": "magnitude type",
+          "type": "string"
+        }
+      },
+      "required": ["time", "la", "lo", "dp"]
+    },
+    "Path": {
+      "type": "object",
+      "properties": {
+        "gcarc": {
+          "description": "great circle arc distance in degrees, for uses when only distance is needed",
+          "type": "number"
+        },
+        "az": {
+          "description": "great circle azimuth degrees from event to station, for uses when only distance is needed",
+          "type": "number"
+        },
+        "baz": {
+          "description": "great circle back azimuth in degrees back from station to event, for uses when only distance is needed",
+          "type": "number"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "y": {
+      "description": "timeseries amplitude",
+      "type": "object",
+      "properties": {
+        "si": {
+          "description": "si units of the timeseries amplitude, ex m/s m/s2",
+          "type": "string"
+        }
+      }
+    },
+    "st": {
+      "description": "receiver station",
+      "$ref": "#/$defs/Station"
+    },
+    "ev": {
+      "description": "source earthquake",
+      "$ref": "#/$defs/Origin"
+    },
+    "path": {
+      "description": "path between source and receiver",
+      "$ref": "#/$defs/Path"
+    },
+    "mark": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Marker"
+      }
+    }
+  }
+}
