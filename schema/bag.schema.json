@@ -80,6 +80,28 @@
       },
       "required": ["val"]
     },
+    "MomentTensor": {
+      "type": "object",
+      "properties": {
+        "moment": {
+          "description": "scalar moment, M0",
+          "type": "number"
+        },
+        "tensor": {
+          "description": "3x3 symmetric tensor, 6 values, often scaled by the scalar moment",
+          "type": "array",
+          "prefixItems": [
+            { "type": "number" },
+            { "type": "number" },
+            { "type": "number" },
+            { "type": "number" },
+            { "type": "number" },
+            { "type": "number" }
+          ]
+        }
+      },
+      "required": ["val"]
+    },
     "Event": {
       "type": "object",
       "properties": {
@@ -94,6 +116,10 @@
         "mag": {
           "description": "magnitude",
           "$ref": "#/$defs/Magnitude"
+        },
+        "mt": {
+            "description": "moment tensor",
+            "$ref": "#/$defs/MomentTensor"
         }
       }
     },
