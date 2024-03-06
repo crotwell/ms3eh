@@ -15,6 +15,9 @@
         "name": {
           "type": "string"
         },
+        "mtype": {
+          "type": "string"
+        },
         "amp": {
           "type": "number"
         }
