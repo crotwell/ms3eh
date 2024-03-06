@@ -20,6 +20,9 @@
         },
         "amp": {
           "type": "number"
+        },
+        "desc": {
+          "type": "string"
         }
       },
       "required": ["time", "name"]
