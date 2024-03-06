@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
-from simpledali import MSeed3Header, Mseed3Record
-import simpledali
+from simplemseed import MSeed3Header, MSeed3Record
+import simplemseed
 import json
 import jsonschema
 import os
@@ -18,7 +18,7 @@ def loadSchema(schemafilename, registry):
 
 def validate(ms3filename, ehschema, registry):
     with open(ms3filename, "rb") as infile:
-        rec = simpledali.mseed3.nextMSeed3Record(infile)
+        rec = simplemseed.mseed3.nextMSeed3Record(infile)
         print(rec.eh)
         jsonschema.validate(instance=rec.eh, schema=ehschema, registry=registry)
         print("Got miniseed3 record")
