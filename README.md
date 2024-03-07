@@ -6,7 +6,7 @@ Commonly needed "extras" stored in miniseed3 extra headers
 
 Generate typescript types from schema with:
 ```
-npm run tots
+cd typescript ; npm run tots
 ```
 
 # Python
