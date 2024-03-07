@@ -18,5 +18,5 @@ python createTestData.py
 
 Validate records:
 ```
-python validateEH.py -s ../schema/bag.schema.json -f testeh.ms3
+python validateEH.py -f testeh.ms3
 ```
