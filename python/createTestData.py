@@ -5,10 +5,9 @@ import crc32c
 import array
 import json
 array.array('i')
-from simpledali import MSeed3Header, Mseed3Record
-import simpledali
+from simplemseed import MSeed3Header, MSeed3Record
 import struct
-output_file = 'output.mseed'
+output_file = 'output.ms3'
 
 
 def crcAsHex(crc):
@@ -41,15 +40,11 @@ eh = {
 
 
 data = array.array('i',( (i%99-49) for i in range(0,1000)))
-header = simpledali.MSeed3Header()
+header = MSeed3Header()
 header.starttime = "2024-01-01T15:13:55.123456Z"
 identifier = "FDSN:XX_FAKE__H_H_Z"
-header.encoding = simpledali.seedcodec.INTEGER
 header.sampleRatePeriod = 40
-header.numSamples = len(data)
-encodedData = simpledali.compress(header.encoding, data).dataView
-header.dataLength = len(encodedData)
-record = simpledali.Mseed3Record(header, identifier, encodedData, extraHeaders=eh)
+record = MSeed3Record(header, identifier, data, extraHeaders=eh)
 recordBytes = record.pack()
 
 with open("testeh.ms3", "wb") as of:

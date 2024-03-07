@@ -18,10 +18,13 @@ def loadSchema(schemafilename, registry):
 
 def validate(ms3filename, ehschema, registry):
     with open(ms3filename, "rb") as infile:
-        rec = simplemseed.mseed3.nextMSeed3Record(infile)
-        print(rec.eh)
-        jsonschema.validate(instance=rec.eh, schema=ehschema, registry=registry)
-        print("Got miniseed3 record")
+        for rec in simplemseed.mseed3.readMSeed3Records(infile):
+            if rec.eh is not None and len(rec.eh) > 0:
+                print(json.dumps(rec.eh, indent=2) )
+                jsonschema.validate(instance=rec.eh, schema=ehschema, registry=registry)
+                print("Got valid miniseed3 eh in record")
+            else:
+                print("Got miniseed3 record with no eh")
 
 def do_parseargs():
     parser = argparse.ArgumentParser(
@@ -60,7 +63,12 @@ def main():
     registry = Registry()
     with open("../schema/ms3extraheaders.schema.json", "r") as ms3ehschemaIn:
         schema = json.load(ms3ehschemaIn)
-    for sfile in args.schema:
+    schemaFiles = [ "../schema/ms3extraheaders.schema.json",
+                   "../schema/bag.schema.json"
+                   ]
+    if args.schema is not None:
+        schemaFiles = schemaFiles + args.schema
+    for sfile in schemaFiles:
         if not os.path.exists(sfile):
             print(f"File {sfile} does not seem to exist, cowardly quitting...")
             return
