@@ -4,18 +4,24 @@
   "title": "Bag Extra Header",
   "description": "Common metadata json about a seismogram.",
   "$defs": {
+    "Time": {
+      "description": "time as ISO8601",
+      "type":"string",
+      "format": "date-time"
+    },
     "Marker": {
       "type": "object",
       "properties": {
-        "time": {
+        "tm": {
           "description": "marker time as ISO8601",
-          "type":"string",
-          "format": "date-time"
+          "$ref": "#/$defs/Time"
         },
-        "name": {
+        "n": {
+          "description": "name of the marker, like P",
           "type": "string"
         },
         "mtype": {
+          "description": "type of marker, usual 'pk' for measurement/pick on data or 'md' for predicted from model",
           "type": "string"
         },
         "amp": {
@@ -25,7 +31,7 @@
           "type": "string"
         }
       },
-      "required": ["time", "name"]
+      "required": ["tm", "n"]
     },
     "Station": {
       "type": "object",
@@ -38,7 +44,7 @@
           "description": "longitude in degrees",
           "type": "number"
         },
-        "elev": {
+        "el": {
           "description": "elevation in meters",
           "type": "number"
         },
@@ -52,7 +58,7 @@
     "Origin": {
       "type": "object",
       "properties": {
-        "time": {
+        "tm": {
           "description": "origin time as ISO8601",
           "type": "string",
           "format": "date-time"
@@ -70,21 +76,21 @@
           "type": "number"
         }
       },
-      "required": ["time", "la", "lo", "dp"]
+      "required": ["tm", "la", "lo", "dp"]
     },
     "Magnitude": {
       "type": "object",
       "properties": {
-        "val": {
+        "v": {
           "description": "magnitude value",
           "type": "number"
         },
-        "type": {
+        "t": {
           "description": "magnitude type",
           "type": "string"
         }
       },
-      "required": ["val"]
+      "required": ["v"]
     },
     "MomentTensor": {
       "type": "object",
@@ -106,7 +112,7 @@
           ]
         }
       },
-      "required": ["val"]
+      "required": ["moment"]
     },
     "Event": {
       "type": "object",
@@ -115,7 +121,7 @@
           "description": "public identifier for earthquake",
           "type": "string"
         },
-        "origin": {
+        "or": {
           "description": "origin, location and time",
           "$ref": "#/$defs/Origin"
         },
@@ -150,7 +156,7 @@
       "type": "object",
       "properties": {
         "si": {
-          "description": "si units of the timeseries amplitude, ex m/s m/s2",
+          "description": "si units of the timeseries amplitude, ex: count, m/s, m/s2",
           "type": "string"
         },
         "proc": {
@@ -164,7 +170,7 @@
   "type": "object",
   "properties": {
     "y": {
-      "description": "timeseries amplitude and processing state",
+      "description": "timeseries units and processing state",
       "$ref": "#/$defs/Timeseries"
     },
     "st": {

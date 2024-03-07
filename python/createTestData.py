@@ -14,29 +14,36 @@ def crcAsHex(crc):
     return "0x{:08X}".format(crc)
 
 eh = {
-        "bag": {
-            "y": {
-                "proc": "raw",
-                "si": "count"
+    "bag": {
+        "y": {
+            "proc": "raw",
+            "si": "count"
+        },
+        "st": {
+            "la": 34.65,
+            "lo": -80.46
+        },
+        "ev": {
+            "or": {
+                "tm": "2024-02-06T11:30:03Z",
+                "la": 34.17,
+                "lo": -80.70,
+                "dp": 1.68,
             },
-            "st": {
-                "la": 34.65,
-                "lo": -80.46
-           },
-           "ev": {
-               "origin": {
-                   "time": "2024-02-06T11:30:03Z",
-                   "la": 34.17,
-                   "lo": -80.70,
-                   "dp": 1.68,
-               },
-               "mag": {
-                   "val": 1.74,
-                   "type": "md"
-               }
+            "mag": {
+                "v": 1.74,
+                "t": "md"
             }
-        }
+        },
+        "mark": [
+            {
+                "tm": "2024-02-06T11:39:98Z",
+                "n": "p",
+                "mtype": "md"
+            }
+        ]
     }
+}
 
 
 data = array.array('i',( (i%99-49) for i in range(0,1000)))
