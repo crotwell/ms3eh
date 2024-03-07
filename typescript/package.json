@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "tots": "npx json-schema-to-typescript --cwd ../schema ../schema/bag.schema.json  > ms3eh_bag.ts"
+    "bagtots": "npx json-schema-to-typescript --cwd ../schema ../schema/bag.schema.json  > ms3ehbagtypes.ts",
+    "ms3ehtots": "npx json-schema-to-typescript --cwd ../schema ../schema/ms3extraheaders.schema.json  > ms3ehtypes.ts",
+    "tots": "npm run bagtots && npm run ms3ehtots"
   },
   "keywords": [
     "miniseed3",
