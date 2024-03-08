@@ -33,7 +33,7 @@
       },
       "required": ["tm", "n"]
     },
-    "Station": {
+    "Channel": {
       "type": "object",
       "properties": {
         "la": {
@@ -50,6 +50,14 @@
         },
         "dp": {
           "description": "depth below surface in meters",
+          "type": "number"
+        },
+        "az": {
+          "description": "channel azimuth from north in degrees",
+          "type": "number"
+        },
+        "dip": {
+          "description": "channel dip from horizontal in degrees, up is -90",
           "type": "number"
         }
       },
@@ -173,9 +181,9 @@
       "description": "timeseries units and processing state",
       "$ref": "#/$defs/Timeseries"
     },
-    "st": {
-      "description": "receiver station",
-      "$ref": "#/$defs/Station"
+    "ch": {
+      "description": "recording station/channel",
+      "$ref": "#/$defs/Channel"
     },
     "ev": {
       "description": "source earthquake",
