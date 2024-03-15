@@ -96,7 +96,8 @@ See extra header handling in python in [simplemseed](https://github.com/crotwell
 
 # Java
 
-See extra header handling in the [seisFile](https://github.com/crotwell/seisFile) project. Version 3.0 (not yet released), can use bag headers for travel time
+See extra header handling in the [seisFile](https://github.com/crotwell/seisFile) project.
+[TauP](https://github.com/crotwell/TauP) version 3.0 (not yet released), can use bag headers for travel time
 calculations and set markers in miniseed3 files via `taup setmseed3`.
 
 
