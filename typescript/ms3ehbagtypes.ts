@@ -13,6 +13,9 @@ export interface BagExtraHeader {
   ch?: Channel;
   ev?: Event;
   path?: Path;
+  /**
+   * markers, picks or predicted arrival times
+   */
   mark?: Marker[];
   [k: string]: unknown;
 }

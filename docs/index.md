@@ -20,7 +20,7 @@ See also the standard [FDSN extra headers](http://docs.fdsn.org/projects/minisee
 
 # Schema
 
-JSON-Schema file is [here](https://github.com/crotwell/ms3eh/blob/main/schema/bag.schema.json) and documentation can be viewed [here](https://github.com/crotwell/ms3eh/blob/main/docs/bag.schema.md).
+JSON-Schema file is [here](https://github.com/crotwell/ms3eh/blob/main/schema/bag.schema.json) and documentation can be viewed [here](bag.schema.html).
 
 # Typescript
 
@@ -29,7 +29,10 @@ Generate typescript types from schema for use in javascript with:
 cd typescript ; npm run tots
 ```
 
-See [seisplotjs](https://github.com/crotwell/seisplotjs) for javascript usage.
+See [seisplotjs](https://github.com/crotwell/seisplotjs) for javascript usage. A simple example:
+```
+impo
+```
 
 # Python
 
@@ -98,11 +101,12 @@ See extra header handling in python in [simplemseed](https://github.com/crotwell
 
 See extra header handling in the [seisFile](https://github.com/crotwell/seisFile) project.
 [TauP](https://github.com/crotwell/TauP) version 3.0 (not yet released), can use bag headers for travel time
-calculations and set markers in miniseed3 files via `taup setmseed3`.
+calculations and set markers in miniseed3 files via `taup setms3`.
 
 
 # Rebuild Schema docs
 ```
 pip install json-schema-for-humans
 generate-schema-doc --config template_name=md  schema docs
+generate-schema-doc --config template_name=js  schema docs/html
 ```

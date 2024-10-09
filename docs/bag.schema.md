@@ -37,13 +37,13 @@
 
 **Description:** Common metadata json about a seismogram.
 
-| Property         | Pattern | Type   | Deprecated | Definition            | Title/Description                     |
-| ---------------- | ------- | ------ | ---------- | --------------------- | ------------------------------------- |
-| - [y](#y )       | No      | object | No         | In #/$defs/Timeseries | timeseries units and processing state |
-| - [ch](#ch )     | No      | object | No         | In #/$defs/Channel    | recording station/channel             |
-| - [ev](#ev )     | No      | object | No         | In #/$defs/Event      | source earthquake                     |
-| - [path](#path ) | No      | object | No         | In #/$defs/Path       | path between source and receiver      |
-| - [mark](#mark ) | No      | array  | No         | -                     | -                                     |
+| Property         | Pattern | Type   | Deprecated | Definition            | Title/Description                         |
+| ---------------- | ------- | ------ | ---------- | --------------------- | ----------------------------------------- |
+| - [y](#y )       | No      | object | No         | In #/$defs/Timeseries | timeseries units and processing state     |
+| - [ch](#ch )     | No      | object | No         | In #/$defs/Channel    | recording station/channel                 |
+| - [ev](#ev )     | No      | object | No         | In #/$defs/Event      | source earthquake                         |
+| - [path](#path ) | No      | object | No         | In #/$defs/Path       | path between source and receiver          |
+| - [mark](#mark ) | No      | array  | No         | -                     | markers, picks or predicted arrival times |
 
 ## <a name="y"></a>1. Property `Bag Extra Header > y`
 
@@ -271,6 +271,8 @@ Must be one of:
 | **Type**     | `array` |
 | **Required** | No      |
 
+**Description:** markers, picks or predicted arrival times
+
 |                      | Array restrictions |
 | -------------------- | ------------------ |
 | **Min items**        | N/A                |
@@ -343,4 +345,4 @@ Must be one of:
 | **Required** | No       |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-03-15 at 13:57:41 -0400
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-09 at 15:32:24 -0400

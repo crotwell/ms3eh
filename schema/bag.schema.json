@@ -68,8 +68,7 @@
       "properties": {
         "tm": {
           "description": "origin time as ISO8601",
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/$defs/Time"
         },
         "la": {
           "description": "latitude in degrees",
@@ -195,6 +194,7 @@
     },
     "mark": {
       "type": "array",
+      "description": "markers, picks or predicted arrival times",
       "items": {
         "$ref": "#/$defs/Marker"
       }
