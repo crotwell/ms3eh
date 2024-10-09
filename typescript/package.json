@@ -19,7 +19,7 @@
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "jest": "^29.7.0",
-    "json-schema-to-typescript": "^13.1.2",
+    "json-schema-to-typescript": "^15.0.2",
     "typescript": "^5.3.3"
   }
 }
