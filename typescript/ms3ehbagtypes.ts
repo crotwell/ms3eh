@@ -31,6 +31,28 @@ export interface Timeseries {
    * basic processing type. Raw is unprocessed, gain has scalar gain/units, corrected transfer of frequency response, processed further userlevel processing
    */
   proc?: "raw" | "gain" | "corrected" | "synth" | "processed";
+  /**
+   * source of timeseries data
+   */
+  req?: {
+    /**
+     * data center, should be name in FDSN data center registry
+     */
+    dc?: string;
+    /**
+     * start time of request as ISO8601. May be different from start of timeseries due to missing data
+     */
+    sttm?: string;
+    /**
+     * end time of request as ISO8601. May be different from end of timeseries due to missing data
+     */
+    endtm?: string;
+    /**
+     * time request was made as ISO8601.
+     */
+    reqtm?: string;
+    [k: string]: unknown;
+  };
   [k: string]: unknown;
 }
 /**

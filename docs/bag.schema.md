@@ -3,6 +3,11 @@
 - [1. Property `Bag Extra Header > y`](#y)
   - [1.1. Property `Bag Extra Header > y > si`](#y_si)
   - [1.2. Property `Bag Extra Header > y > proc`](#y_proc)
+  - [1.3. Property `Bag Extra Header > y > req`](#y_req)
+    - [1.3.1. Property `Bag Extra Header > y > req > dc`](#y_req_dc)
+    - [1.3.2. Property `Bag Extra Header > y > req > sttm`](#y_req_sttm)
+    - [1.3.3. Property `Bag Extra Header > y > req > endtm`](#y_req_endtm)
+    - [1.3.4. Property `Bag Extra Header > y > req > reqtm`](#y_req_reqtm)
 - [2. Property `Bag Extra Header > ch`](#ch)
   - [2.1. Property `Bag Extra Header > ch > la`](#ch_la)
   - [2.2. Property `Bag Extra Header > ch > lo`](#ch_lo)
@@ -60,6 +65,7 @@
 | ------------------ | ------- | ---------------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | + [si](#y_si )     | No      | string           | No         | -          | si units of the timeseries amplitude, ex: count, m/s, m/s2                                                                                              |
 | - [proc](#y_proc ) | No      | enum (of string) | No         | -          | basic processing type. Raw is unprocessed, gain has scalar gain/units, corrected transfer of frequency response, processed further userlevel processing |
+| - [req](#y_req )   | No      | object           | No         | -          | source of timeseries data                                                                                                                               |
 
 ### <a name="y_si"></a>1.1. Property `Bag Extra Header > y > si`
 
@@ -85,6 +91,62 @@ Must be one of:
 * "corrected"
 * "synth"
 * "processed"
+
+### <a name="y_req"></a>1.3. Property `Bag Extra Header > y > req`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+
+**Description:** source of timeseries data
+
+| Property                 | Pattern | Type   | Deprecated | Definition                     | Title/Description                                                                               |
+| ------------------------ | ------- | ------ | ---------- | ------------------------------ | ----------------------------------------------------------------------------------------------- |
+| - [dc](#y_req_dc )       | No      | string | No         | -                              | data center, should be name in FDSN data center registry                                        |
+| - [sttm](#y_req_sttm )   | No      | string | No         | Same as [tm](#defs_Marker_tm ) | start time of request as ISO8601. May be different from start of timeseries due to missing data |
+| - [endtm](#y_req_endtm ) | No      | string | No         | Same as [tm](#defs_Marker_tm ) | end time of request as ISO8601. May be different from end of timeseries due to missing data     |
+| - [reqtm](#y_req_reqtm ) | No      | string | No         | Same as [tm](#defs_Marker_tm ) | time request was made as ISO8601.                                                               |
+
+#### <a name="y_req_dc"></a>1.3.1. Property `Bag Extra Header > y > req > dc`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** data center, should be name in FDSN data center registry
+
+#### <a name="y_req_sttm"></a>1.3.2. Property `Bag Extra Header > y > req > sttm`
+
+|                        |                       |
+| ---------------------- | --------------------- |
+| **Type**               | `string`              |
+| **Required**           | No                    |
+| **Same definition as** | [tm](#defs_Marker_tm) |
+
+**Description:** start time of request as ISO8601. May be different from start of timeseries due to missing data
+
+#### <a name="y_req_endtm"></a>1.3.3. Property `Bag Extra Header > y > req > endtm`
+
+|                        |                       |
+| ---------------------- | --------------------- |
+| **Type**               | `string`              |
+| **Required**           | No                    |
+| **Same definition as** | [tm](#defs_Marker_tm) |
+
+**Description:** end time of request as ISO8601. May be different from end of timeseries due to missing data
+
+#### <a name="y_req_reqtm"></a>1.3.4. Property `Bag Extra Header > y > req > reqtm`
+
+|                        |                       |
+| ---------------------- | --------------------- |
+| **Type**               | `string`              |
+| **Required**           | No                    |
+| **Same definition as** | [tm](#defs_Marker_tm) |
+
+**Description:** time request was made as ISO8601.
 
 ## <a name="ch"></a>2. Property `Bag Extra Header > ch`
 
@@ -345,4 +407,4 @@ Must be one of:
 | **Required** | No       |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-09 at 15:32:24 -0400
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-10 at 10:53:51 -0400
