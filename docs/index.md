@@ -20,7 +20,7 @@ See also the standard [FDSN extra headers](http://docs.fdsn.org/projects/minisee
 
 # Schema
 
-JSON-Schema file is [here](https://github.com/crotwell/ms3eh/blob/main/schema/bag.schema.json) and documentation can be viewed [here](bag.schema.html).
+JSON-Schema file is [here](https://github.com/crotwell/ms3eh/blob/main/schema/bag.schema.json) and documentation can be viewed [here](bag.schema.md).
 
 # Typescript
 
